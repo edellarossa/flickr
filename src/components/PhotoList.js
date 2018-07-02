@@ -7,11 +7,11 @@ class PhotoList extends Component {
   state = { photos: [], reload: false};
 
   componentWillMount() {
-    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=6e8a597cb502b7b95dbd46a46e25db8d&photoset_id=${this.props.albumId}&user_id=141025070%40N08&format=json&nojsoncallback=1`)
+    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=9a2dfba2a213b920d8e0c787f5a09eae&photoset_id=${this.props.albumId}&user_id=141025070%40N08&format=json&nojsoncallback=1`)
     .then((response) => {
       var aux;
       response.data.photoset.photo.map(photo => {
-        axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.comments.getList&api_key=bf8f6eb6d8864de3bcac43bbf25ecc1e&photo_id=${photo.id}&format=json&nojsoncallback=1'`)
+        axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.comments.getList&api_key=9a2dfba2a213b920d8e0c787f5a09eae&photo_id=${photo.id}&format=json&nojsoncallback=1`)
         .then(res => {
           if(res.data.comments.comment)
           photo["comment"] = this.getComments(res.data.comments.comment)
